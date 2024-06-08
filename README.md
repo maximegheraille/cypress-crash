@@ -1,2 +1,2 @@
 # cypress-crash
-cypress-crash
+cypress-crash -
