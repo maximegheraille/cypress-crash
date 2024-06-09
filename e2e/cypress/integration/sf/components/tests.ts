@@ -9,6 +9,8 @@ describe(`test`, () => {
   beforeEach(() => {});
 
   describe.only('check test', () => {
-    cy.get('.k1zIA.rSk4se').should('exist');
+    it('check test', () => {
+      cy.get('.k1zIA.rSk4se').should('exist');
+    })
   });
 });
