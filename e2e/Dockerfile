@@ -14,4 +14,4 @@ RUN pnpm install --frozen-lockfile
 
 RUN pnpm exec playwright install --with-deps webkit
 
-COPY . /opt/app
+COPY . .
