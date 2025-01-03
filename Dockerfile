@@ -9,7 +9,7 @@ RUN npm install -g pnpm
 
 COPY package.json package-lock.json ./
 
-RUN npm ci
+RUN npm i
 
 RUN pnpm exec playwright install --with-deps webkit
 
