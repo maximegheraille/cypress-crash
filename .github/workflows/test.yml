@@ -13,9 +13,6 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
-        with:
-          sparse-checkout: 'e2e'
-          sparse-checkout-cone-mode: false
 
       - name: Build Docker Image
         run: |
