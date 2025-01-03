@@ -1,4 +1,5 @@
 ARG CHROME_VERSION='131.0.6778.108-1'
+ARG NODE_VERSION='20.10.0'
 
 FROM cypress/factory:latest
 
