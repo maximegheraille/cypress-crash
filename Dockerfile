@@ -7,7 +7,7 @@ WORKDIR /
 
 RUN npm install -g pnpm
 
-COPY package.json npm-lock.yaml ./
+COPY package.json package-lock.json ./
 
 RUN npm ci
 
