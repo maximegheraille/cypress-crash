@@ -7,9 +7,9 @@ WORKDIR /
 
 RUN npm install -g pnpm
 
-COPY package.json pnpm-lock.yaml ./
+COPY package.json npm-lock.yaml ./
 
-RUN pnpm install --frozen-lockfile
+RUN npm ci
 
 RUN pnpm exec playwright install --with-deps webkit
 
