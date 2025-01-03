@@ -1,6 +1,8 @@
 import { addMatchImageSnapshotPlugin } from '@simonsmith/cypress-image-snapshot/plugin';
 
-const defaultConfig = {
+import { defineConfig } from 'cypress';
+
+export default defineConfig({
   e2e: {
     video: true,
     trashAssetsBeforeRuns: false,
@@ -34,6 +36,7 @@ const defaultConfig = {
     viewportWidth: 1920,
     retries: 0,
     testIsolation: false,
-  },
-};
-export { defaultConfig };
+    specPattern: './cypress/integration/sf/components/**/*.ts',
+    baseUrl: 'https://www.cypress.io/',
+  }
+  });

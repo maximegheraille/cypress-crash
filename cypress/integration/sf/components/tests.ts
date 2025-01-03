@@ -1,6 +1,6 @@
 describe(`snapshot`, () => {
   before(() => {
-    cy.visit('https://worlds-highest-website.com/');
+    cy.visit('https://www.smashingmagazine.com/2017/05/long-scrolling/');
   });
   beforeEach(() => {
     cy.get('body').as('main');
@@ -21,15 +21,15 @@ describe(`snapshot`, () => {
           failureThreshold: 0,
           allowSizeMismatch: true,
           failureThresholdType: 'percent',
-          capture: 'viewPort',
+          capture: 'viewport',
           comparisonMethod: 'ssim',
-          customSnapshotsDir: `./cypress/reports/mochareports/snapshots/${Cypress.spec.fileName}`,
+          customSnapshotsDir: `./cypress/reports/mochareports/snapshots/`,
           e2eSpecDir: Cypress.spec.relative,
           snapFilenameExtension: '.snap',
         };
-        cy.get('@main').scrollIntoView();
+        cy.get('main').scrollIntoView();
         cy.wait(3000);
-        cy.get('@main').matchImageSnapshot(options);
+        cy.get('main').matchImageSnapshot(options);
       });
     });
   });
