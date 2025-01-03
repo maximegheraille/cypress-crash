@@ -1,17 +1,23 @@
-ARG CHROME_VERSION='120.0.6099.109-1'
-ARG NODE_VERSION='20.10.0'
+ARG CHROME_VERSION='131.0.6778.108-1'
 
 FROM cypress/factory:latest
 
-WORKDIR /
-# Set NODE_OPTIONS environment variable
-ENV NODE_OPTIONS="--max_old_space_size=8192"
-RUN npm install -g pnpm
+WORKDIR /opt/app
 
+# Install corepack
+RUN npm install -g corepack
+
+# Enable corepack
+RUN corepack enable
+
+# Install AWS CLI
+RUN apt-get update && apt-get install -y awscli
+
+# Copy only the package.json and pnpm-lock files first
 COPY package.json pnpm-lock.yaml ./
 
+# Install dependencies without copying the entire context
 RUN pnpm install --frozen-lockfile
 
-RUN pnpm exec playwright install --with-deps webkit
-
-COPY . .
+# Copy the rest of the application files
+COPY . /opt/app
