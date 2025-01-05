@@ -3,16 +3,17 @@ describe(`snapshot`, () => {
     cy.visit('https://www.smashingmagazine.com/2017/05/long-scrolling/');
   });
   beforeEach(() => {
-    cy.get('body').as('main');
+    cy.get('mw-page-container').as('main');
   });
 
-  describe('full page snapshot 22', () => {
+
     [
       { name: 'xs', viewport: 'iphone-3' },
       { name: 'sm', viewport: [577, 812] },
       { name: 'md', viewport: [769, 1025] },
       { name: 'lg', viewport: [993, 1080] },
     ].forEach(({ name, viewport }) => {
+      describe(`full page snapshot ${name}`, () => {
       it(`snapshot ${name}`, () => {
         if (Array.isArray(viewport)) {
           cy.viewport(viewport[0], viewport[1]);
@@ -27,9 +28,9 @@ describe(`snapshot`, () => {
           e2eSpecDir: Cypress.spec.relative,
           snapFilenameExtension: '.snap',
         };
-        cy.get('main').scrollIntoView();
+        cy.get('@main').scrollIntoView();
         cy.wait(3000);
-        cy.get('main').matchImageSnapshot(options);
+        cy.get('@main').matchImageSnapshot(options);
       });
     });
   });
